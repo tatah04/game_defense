@@ -80,6 +80,9 @@ position = Vector2(1178, 502)
 [node name="Chicken_Basic" parent="Allies" instance=ExtResource("3_c6hqk")]
 position = Vector2(148, 210)
 
+[node name="Chicken_Basic2" parent="Allies" instance=ExtResource("3_c6hqk")]
+position = Vector2(148, 210)
+
 [node name="Chicken_Big" parent="." instance=ExtResource("4_2pcb5")]
 position = Vector2(-422, 43)
 
