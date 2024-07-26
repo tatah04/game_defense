@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://c11xudt3do5n0"]
+
+[ext_resource type="Script" path="res://Scripts/Chicken_Red.gd" id="1_20jlh"]
+[ext_resource type="Texture2D" uid="uid://bl4b4788qa0qd" path="res://Assets/Characters/Chickens and Guns/4c.png" id="2_ym7l6"]
+[ext_resource type="Texture2D" uid="uid://cb1o47o51u6cs" path="res://Assets/Characters/Chickens and Guns/6g.png" id="3_xdupr"]
+
+[sub_resource type="Animation" id="Animation_wi2og"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rvogc"]
+resource_name = "Shooting"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35, 30), Vector2(25, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_qhwmn"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun_Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35, 30), Vector2(35, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fi815"]
+_data = {
+"RESET": SubResource("Animation_wi2og"),
+"SHOOT": SubResource("Animation_rvogc"),
+"idle": SubResource("Animation_qhwmn")
+}
+
+[node name="Chicken_Red" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_20jlh")
+
+[node name="Chicken_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ym7l6")
+
+[node name="Gun_Sprite" type="Sprite2D" parent="."]
+position = Vector2(25, 30)
+texture = ExtResource("3_xdupr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fi815")
+}
+autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmqg016bynnxp"]
+
+[ext_resource type="PackedScene" uid="uid://y3srs5mktt41" path="res://Scenes/Units/Dog.tscn" id="1_b7j7c"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_scf0t"]
+[ext_resource type="PackedScene" uid="uid://dxlwficl8t1o7" path="res://Scenes/Units/Chicken_Basic.tscn" id="3_c6hqk"]
+[ext_resource type="PackedScene" uid="uid://ca4e8m162amcl" path="res://Scenes/Units/Chicken_Big.tscn" id="4_2pcb5"]
+[ext_resource type="Texture2D" uid="uid://shpxn7he8y3h" path="res://Assets/Gameplay/Area/_Preview.png" id="5_q05h5"]
+[ext_resource type="PackedScene" uid="uid://c11xudt3do5n0" path="res://Scenes/Units/Chicken_Red.tscn" id="6_15w4n"]
+
+[node name="Main Scene" type="Node2D"]
+position = Vector2(570, 310)
+
+[node name="BG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(67, 50)
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("5_q05h5")
+
+[node name="Misc" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Misc"]
+unique_name_in_owner = true
+script = ExtResource("1_scf0t")
+
+[node name="Camera2D" type="Camera2D" parent="Misc"]
+position = Vector2(640, 360)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -300.0
+offset_right = 55.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="Button2" type="Button" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = -300.0
+offset_right = 192.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Dog" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(985, 347)
+
+[node name="Dog3" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(986, 214)
+
+[node name="Dog2" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(1003, 506)
+
+[node name="Dog4" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(1160, 343)
+
+[node name="Dog5" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(1161, 210)
+
+[node name="Dog6" parent="Enemies" instance=ExtResource("1_b7j7c")]
+position = Vector2(1178, 502)
+
+[node name="Allies" type="Node" parent="."]
+
+[node name="Chicken_Basic" parent="Allies" instance=ExtResource("3_c6hqk")]
+position = Vector2(148, 210)
+
+[node name="Chicken_Big" parent="." instance=ExtResource("4_2pcb5")]
+position = Vector2(-422, 43)
+
+[node name="Chicken_Red" parent="." instance=ExtResource("6_15w4n")]
+position = Vector2(-419, 187)
+
+[connection signal="pressed" from="UI/Button" to="Misc/GameManager" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Button2" to="Misc/GameManager" method="_on_button_2_pressed"]
